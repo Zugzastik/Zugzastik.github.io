@@ -1,6 +1,5 @@
 <ifModule mod_expires.c>
-Options +FollowSymLinks
-Redirect /test.html https://zugzastik.github.io/m2group/
+
 # Add correct content-type for fonts
 AddType application/vnd.ms-fontobject .eot
 AddType application/x-font-ttf .ttf
