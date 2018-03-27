@@ -2,6 +2,23 @@ $(function() {
 	// Custom JS
 
 
+$(".callback").submit(function() { //Change
+	var th = $(this);
+	$.ajax({
+		type: "POST",
+		url: "mail.php", //Change
+		data: th.serialize()
+	}).done(function() {
+		alert("Спасибо за заявку! Мы свяжемся с вами в ближайшее время.");
+		setTimeout(function() {
+			// Done Functions
+			th.trigger("reset");
+		}, 1000);
+	});
+return false;
+});
+
+
 $(".tabs>ul>li").click(function(e) {
   e.preventDefault();
   $(".tabs>ul>li").removeClass('active');
@@ -10,6 +27,12 @@ $(".tabs>ul>li").click(function(e) {
 });
 
 
+$('.owl-next').click(function() {
+	$(".slider1").trigger('next.owl.carousel', [600]);
+})
+$('.owl-prev').click(function() {
+	$(".slider1").trigger('prev.owl.carousel', [600]);
+});
 
 $('.slider1').owlCarousel({
 		loop: true,
@@ -25,12 +48,6 @@ $('.slider1').owlCarousel({
 		
 });
 
-$('.owl-next').click(function() {
-	$(".slider1").trigger('next.owl.carousel', [600]);
-})
-$('.owl-prev').click(function() {
-	$(".slider1").trigger('prev.owl.carousel', [600]);
-});
 
 $('.slider2').owlCarousel({
 		loop: true,
@@ -89,22 +106,19 @@ $(document).ready(function(){
 	});
 });
 
-$("form").submit(function() { //Change
-	var th = $(this);
-	$.ajax({
-		type: "POST",
-		url: "mail.php", //Change
-		data: th.serialize()
-	}).done(function() {
-		alert("Спасибо за заявку! Мы свяжемся с вами в ближайшее время.");
-		setTimeout(function() {
-			// Done Functions
-			th.trigger("reset");
-		}, 1000);
-	});
-return false;
+$(".popup").magnificPopup({
+		type: 'inline',
+
+		fixedContentPos: false,
+		fixedBgPos: true,
+
+		overflowY: 'auto',
+		closeBtnInside: true,
+		preloader: false,
+		
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'my-mfp-slide-bottom'
 });
-
-
 
 });
